@@ -1,7 +1,7 @@
 Name: Facebook SDK
 AntiForgery: enabled
 Author: Piedone
-Website: http://orchardproject.net/gallery/List/Modules/Orchard.Module.FacebookSDK
+Website: http://orchardfbsdk.codeplex.com
 Version: 6.0.20
 OrchardVersion: 1.4.2
 Description: Contains the Facebook C# SDK (http://csharpsdk.org/) dll so modules don't have to include it in their own package. Currently the client .NET 4 version of v6.0.20 is included (package version is the same as the SDK version).
