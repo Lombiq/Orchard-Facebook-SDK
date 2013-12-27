@@ -100,6 +100,13 @@
             The json result.
             </returns>
         </member>
+        <member name="M:Facebook.FacebookApiEventArgs.GetResultData``1">
+            <summary>
+            Get the json result.
+            </summary>
+            <typeparam name="TResult">The result type.</typeparam>
+            <returns>The json result.</returns>
+        </member>
         <member name="T:Facebook.FacebookApiException">
             <summary>
             Represent errors that occur while calling a Facebook API.
@@ -278,11 +285,24 @@
             Sets the default json seriazliers and deserializers.
             </summary>
             <param name="jsonSerializer">Json serializer</param>
-            <param name="jsonDeserializer">Jsonn deserializer</param>
+            <param name="jsonDeserializer">Json deserializer</param>
+        </member>
+        <member name="M:Facebook.FacebookClient.SetJsonSerializers(System.Func{System.Object,System.String},System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Sets the json seriazliers and deserializers for the current instance of <see cref="T:Facebook.FacebookClient"/>.
+            </summary>
+            <param name="jsonSerializer">Json serializer</param>
+            <param name="jsonDeserializer">Json deserializer</param>
         </member>
         <member name="M:Facebook.FacebookClient.SetDefaultHttpWebRequestFactory(System.Func{System.Uri,Facebook.HttpWebRequestWrapper})">
             <summary>
             Sets the default http web request factory.
+            </summary>
+            <param name="httpWebRequestFactory"></param>
+        </member>
+        <member name="M:Facebook.FacebookClient.SetHttpWebRequestFactory(System.Func{System.Uri,Facebook.HttpWebRequestWrapper})">
+            <summary>
+            Sets the http web request factory for the current instance of <see cref="T:Facebook.FacebookClient"/>.
             </summary>
             <param name="httpWebRequestFactory"></param>
         </member>
@@ -379,6 +399,47 @@
             <param name="userState">The user state.</param>
             <returns>The json result.</returns>
         </member>
+        <member name="M:Facebook.FacebookClient.GetAsync(System.String,System.Object,System.Object,System.Type)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <param name="userState">The user state.</param>
+            <param name="resultType">The result type.</param>
+            <returns>The json result.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetAsync``1(System.String,System.Object,System.Object)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <param name="userState">The user state.</param>
+            <typeparam name="TResult">The result type.</typeparam>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetAsync``1(System.String,System.Object)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <typeparam name="TResult">The result type.</typeparam>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetAsync``1(System.String)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <typeparam name="TResult">The result type.</typeparam>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetAsync``1(System.Object)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="parameters">The parameters</param>
+            <typeparam name="TResult">The result type.</typeparam>
+        </member>
         <member name="M:Facebook.FacebookClient.PostAsync(System.Object)">
             <summary>
             Makes an asynchronous POST request to the Facebook server.
@@ -419,7 +480,19 @@
             <param name="userState">The user state.</param>
             <returns>The json result.</returns>
         </member>
+        <member name="M:Facebook.FacebookClient.ApiTaskAsync(Facebook.HttpMethod,System.String,System.Object,System.Type,System.Object,System.Threading.CancellationToken,System.IProgress{Facebook.FacebookUploadProgressChangedEventArgs})">
+            <returns>The task of json result with headers.</returns>
+        </member>
         <member name="M:Facebook.FacebookClient.ApiTaskAsync(Facebook.HttpMethod,System.String,System.Object,System.Type,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Makes an asynchronous request to the Facebook server.
+            </summary>
+            <param name="httpMethod">Http method. (GET/POST/DELETE)</param>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <param name="resultType">The type of deserialize object into.</param>
+            <param name="userState">The user state.</param>
+            <param name="cancellationToken">The cancellation token.</param>
             <returns>The task of json result with headers.</returns>
         </member>
         <member name="M:Facebook.FacebookClient.GetTaskAsync(System.String)">
@@ -451,6 +524,51 @@
             <param name="path">The resource path or the resource url.</param>
             <param name="parameters">The parameters</param>
             <param name="cancellationToken">The cancellation token.</param>
+            <returns>The json result task.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetTaskAsync(System.String,System.Object,System.Threading.CancellationToken,System.Type)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="resultType">The result type.</param>
+            <returns>The json result task.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetTaskAsync``1(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <typeparam name="TResult">The result type.</typeparam>
+            <returns>The json result task.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetTaskAsync``1(System.String,System.Object)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters</param>
+            <typeparam name="TResult">The result type.</typeparam>
+            <returns>The json result task.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetTaskAsync``1(System.Object)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="parameters">The parameters</param>
+            <typeparam name="TResult">The result type.</typeparam>
+            <returns>The json result task.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetTaskAsync``1(System.String)">
+            <summary>
+            Makes an asynchronous GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <typeparam name="TResult">The result type.</typeparam>
             <returns>The json result task.</returns>
         </member>
         <member name="M:Facebook.FacebookClient.PostTaskAsync(System.Object)">
@@ -485,6 +603,9 @@
             <param name="parameters">The parameters</param>
             <param name="userState">The user state.</param>
             <param name="cancellationToken">The cancellation token.</param>
+            <returns>The json result task.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.PostTaskAsync(System.String,System.Object,System.Object,System.Threading.CancellationToken,System.IProgress{Facebook.FacebookUploadProgressChangedEventArgs})">
             <returns>The json result task.</returns>
         </member>
         <member name="M:Facebook.FacebookClient.DeleteTaskAsync(System.String)">
@@ -554,7 +675,7 @@
             The json result task.
             </returns>
         </member>
-        <member name="M:Facebook.FacebookClient.BatchTaskAsync(Facebook.FacebookBatchParameter[],System.Object,System.Threading.CancellationToken)">
+        <member name="M:Facebook.FacebookClient.BatchTaskAsync(Facebook.FacebookBatchParameter[],System.Object,System.Threading.CancellationToken,System.IProgress{Facebook.FacebookUploadProgressChangedEventArgs})">
             <summary>
             Makes an asynchronous batch request to the Facebook server.
             </summary>
@@ -571,7 +692,7 @@
             The json result task.
             </returns>
         </member>
-        <member name="M:Facebook.FacebookClient.BatchTaskAsync(Facebook.FacebookBatchParameter[],System.Object,System.Object,System.Threading.CancellationToken)">
+        <member name="M:Facebook.FacebookClient.BatchTaskAsync(Facebook.FacebookBatchParameter[],System.Object,System.Object,System.Threading.CancellationToken,System.IProgress{Facebook.FacebookUploadProgressChangedEventArgs})">
             <summary>
             Makes an asynchronous batch request to the Facebook server.
             </summary>
@@ -621,6 +742,40 @@
             </summary>
             <param name="path">The resource path or the resource url.</param>
             <param name="parameters">The parameters.</param>
+            <returns>The json result.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.Get(System.String,System.Object,System.Type)">
+            <summary>
+            Makes a GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="resultType">The result type.</param>
+            <returns>The json result.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.Get``1(System.String)">
+            <summary>
+            Makes a GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <typeparam name="TResult">The result type.</typeparam>
+            <returns>The json result.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.Get``1(System.Object)">
+            <summary>
+            Makes a GET request to the Facebook server.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <typeparam name="TResult">The result type.</typeparam>
+            <returns>The json result.</returns>
+        </member>
+        <member name="M:Facebook.FacebookClient.Get``1(System.String,System.Object)">
+            <summary>
+            Makes a GET request to the Facebook server.
+            </summary>
+            <param name="path">The resource path or the resource url.</param>
+            <param name="parameters">The parameters.</param>
+            <typeparam name="TResult">The result type.</typeparam>
             <returns>The json result.</returns>
         </member>
         <member name="M:Facebook.FacebookClient.Post(System.Object)">
@@ -714,6 +869,55 @@
             The Hmac Sha 256 hash.
             </returns>
         </member>
+        <member name="M:Facebook.FacebookClient.VerifyGetSubscription(System.String,System.String,System.String,System.String)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP GET.
+            </summary>
+            <param name="requestHubMode">The request hub.mode</param>
+            <param name="requestVerifyToken">The request hub.verify_token</param>
+            <param name="requestHubChallenge">The request hub.challenge</param>
+            <param name="verifyToken">Expected verify token.</param>
+        </member>
+        <member name="M:Facebook.FacebookClient.VerifyGetSubscription(System.String,System.String,System.String)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP GET.
+            </summary>
+            <param name="requestHubMode">The request hub.mode</param>
+            <param name="requestVerifyToken">The request hub.verify_token</param>
+            <param name="requestHubChallenge">The request hub.challenge</param>
+        </member>
+        <member name="M:Facebook.FacebookClient.VerifyPostSubscription(System.String,System.String,System.Type,System.String)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP POST.
+            </summary>
+            <param name="requestHttpXHubSignature">The request HTTP_X_HUB_SIGNATURE</param>
+            <param name="requestBody">The request body.</param>
+            <param name="resultType">The result type.</param>
+            <param name="appSecret">The App secret.</param>
+        </member>
+        <member name="M:Facebook.FacebookClient.VerifyPostSubscription(System.String,System.String,System.Type)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP POST.
+            </summary>
+            <param name="requestHttpXHubSignature">The request HTTP_X_HUB_SIGNATURE</param>
+            <param name="requestBody">The request body.</param>
+            <param name="resultType">The result type.</param>
+        </member>
+        <member name="M:Facebook.FacebookClient.VerifyPostSubscription(System.String,System.String)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP POST.
+            </summary>
+            <param name="requestHttpXHubSignature">The request HTTP_X_HUB_SIGNATURE</param>
+            <param name="requestBody">The request body.</param>
+        </member>
+        <member name="M:Facebook.FacebookClient.VerifyPostSubscription(System.String,System.String,System.String)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP POST.
+            </summary>
+            <param name="requestHttpXHubSignature">The request HTTP_X_HUB_SIGNATURE</param>
+            <param name="requestBody">The request body.</param>
+            <param name="appSecret">The App secret.</param>
+        </member>
         <member name="M:Facebook.FacebookClient.TryParseOAuthCallbackUrl(System.Uri,Facebook.FacebookOAuthResult@)">
             <summary>
             Try parsing the url to <see cref="T:Facebook.FacebookOAuthResult"/>.
@@ -729,6 +933,31 @@
             <param name="uri"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Facebook.FacebookClient.ParseDialogCallbackUrl(System.Uri)">
+            <summary>
+            Parses the dialog callback url to an object of the resulting data.
+            </summary>
+            <param name="uri"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Facebook.FacebookClient.GetDialogUrl(System.String,System.Object)">
+            <summary>
+            Gets the Facebook dialog url.
+            </summary>
+            <param name="dialog">
+            The dialog name. Values can be oauth, feed, pagetab, friends, pay, apprequests, and send.
+            </param>
+            <param name="parameters">
+             The parameters.
+            </param>
+            <returns>
+            The dialog url.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            If dialog or parameters is null.
+            </exception>
         </member>
         <member name="M:Facebook.FacebookClient.GetLoginUrl(System.Object)">
             <summary>
@@ -822,6 +1051,11 @@
             <summary>
             Event handler when http web request wrapper is created for async api only.
             (used internally by TPL for cancellation support)
+            </summary>
+        </member>
+        <member name="P:Facebook.FacebookClient.SubscriptionVerifyToken">
+            <summary>
+            Gets or sets the verify_token used in Facebook Realtime updates API.
             </summary>
         </member>
         <member name="T:Facebook.FacebookMediaObject">
@@ -1696,6 +1930,44 @@
             <param name="s">The string to html decode.</param>
             <returns>The html decoded string.</returns>
         </member>
+        <member name="M:Facebook.HttpHelper.CopyStream(System.IO.Stream,System.IO.Stream,System.Nullable{System.Int32},System.Boolean,System.Boolean)">
+            <summary>
+            Copy stream.
+            </summary>
+            <param name="source">The source stream.</param>
+            <param name="destination">The destination stream.</param>
+            <param name="bufferSize">The buffer size.</param>
+            <param name="flushInput">Indicates whether to flush the input after every buffer read.</param>
+            <param name="flushOutput">Indicates whether to flush the output after every buffer write.</param>
+        </member>
+        <member name="M:Facebook.HttpHelper.ReadStreamToEnd(System.IO.Stream,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Reads the stream to end.
+            </summary>
+            <param name="input">The input stream.</param>
+            <param name="bufferSize">The buffer size.</param>
+            <param name="flushInput">Indicates whether to flush the input after every buffer read.</param>
+        </member>
+        <member name="M:Facebook.HttpHelper.ReadTask(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Asynchronously reads the stream.
+            </summary>
+            <param name="stream"></param>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Facebook.HttpHelper.WriteTask(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Asynchronously writes to the stream.
+            </summary>
+            <param name="stream"></param>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
         <member name="P:Facebook.HttpHelper.InnerException">
             <summary>
             Gets the inner exception.
@@ -1724,6 +1996,11 @@
         <member name="P:Facebook.HttpHelper.HttpWebResponse">
             <summary>
             Gets the http web response.
+            </summary>
+        </member>
+        <member name="T:Facebook.HttpHelper.Action">
+            <summary>
+            Action delegate.
             </summary>
         </member>
         <member name="T:Facebook.HttpMethod">
@@ -1995,7 +2272,7 @@
             <param name="json">
             A JSON string.
             </param>
-            <param name="object">
+            <param name="obj">
             The object.
             </param>
             <returns>
