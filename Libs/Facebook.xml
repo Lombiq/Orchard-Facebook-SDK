@@ -2055,6 +2055,17 @@
             The internal member dictionary.
             </summary>
         </member>
+        <member name="M:Facebook.JsonObject.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Facebook.JsonObject"/>.
+            </summary>
+        </member>
+        <member name="M:Facebook.JsonObject.#ctor(System.Collections.Generic.IEqualityComparer{System.String})">
+            <summary>
+            Initializes a new instance of <see cref="T:Facebook.JsonObject"/>.
+            </summary>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when comparing keys, or null to use the default <see cref="T:System.Collections.Generic.EqualityComparer`1"/> for the type of the key.</param>
+        </member>
         <member name="M:Facebook.JsonObject.Add(System.String,System.Object)">
             <summary>
             Adds the specified key.
@@ -2068,7 +2079,7 @@
             </summary>
             <param name="key">The key.</param>
             <returns>
-            	<c>true</c> if the specified key contains key; otherwise, <c>false</c>.
+                <c>true</c> if the specified key contains key; otherwise, <c>false</c>.
             </returns>
         </member>
         <member name="M:Facebook.JsonObject.Remove(System.String)">
